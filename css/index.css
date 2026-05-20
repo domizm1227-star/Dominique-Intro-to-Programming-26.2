@@ -1,12 +1,44 @@
 body {
     background-color: #000000;
-    font-family: 'Bookman', serif;
+    color: #228B22;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background-color: #4c0080;
+    padding: 10px 0;
+    text-align: center;
+}
+nav a {
+    color: #228B22;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+nav a:hover {
     color: #228B22;
 }
 h1 {
     color: #228B22;
+    font-size: 36px;
     text-align: center;
-    font-size: 16px;
+    margin-top: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+h2 {
+    color: #228B22;
+    font-size: 24px;
+    text-align: left;
+    margin: 20px 0 10px 20px;
+}
+h3 {
+    color: #228B22;
+    font-size: 20px;
+    text-align: left;
+    margin: 10px 0 5px 40px;
 }
 p {
     color: #228B22;
@@ -14,46 +46,46 @@ p {
     text-align: center;
     margin: 0 20px;
 }
-ul{
-    list-style-type: square;
-    color: #228B22;
-    list-style-position: outside;
-    font-size: 20px;
-    margin: 0 20px;
-}
 section {
     padding: 0 30px;
-    margin: 30px 0;
+    margin: 20px 0;
 }
-.container {
+#about, #experience, #skills, #projects, #connect {
+    background-color: #4c0080;
+    color: #228B22;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+.experience-header {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
 }
-.box {
-    width: 100px;
-    height: 50px;
+.experience-item p {
+    margin: 5px 0;
+    text-align: left;
 }
-#box1 {
-    background-color: #4c0080;
-    color: #ffffff;
-    margin: 150px;
-    padding: 150px 50px;
-    border: 2px solid #ffffff;
+#connect ul {
+    list-style-type: none;
+    padding: 0;
+    justify-content: center;
+    display: flex;
+    gap: 20px;
 }
-#box2 {
+#connect li {
+    display: inline;
     background-color: #4c0080;
-    color: #ffffff;
-    margin: 150px;
-    padding: 150px 50px;
-    border: 2px solid #ffffff;
+    padding: 10px 20px;
+    border: 2px solid #228B22;
+    border-radius: 5px solid #228B22;
 }
-#box3 {
-    background-color: #4c0080;
-    color: #ffffff;
-    margin: 150px;
-    padding: 150px 50px;
-    border: 2px solid #ffffff;
+#connect a {
+    color: #228B22;
+    text-decoration: none;
+    font-weight: bold;
+}
+#connect a:hover {
+    color: #228B22;
 }
