@@ -3,89 +3,70 @@ body {
     color: #228B22;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
-    padding: 0;
 }
-nav {
-    background-color: #4c0080;
-    padding: 10px 0;
-    text-align: center;
+
+section {
+    margin: 20px 0;
+    padding:0% 20px;
 }
-nav a {
-    color: #228B22;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
-    font-weight: bold;
-}
-nav a:hover {
-    color: #228B22;
-}
+
 h1 {
     color: #228B22;
-    font-size: 36px;
+    font-size: 26px;
     text-align: center;
     margin-top: 20px 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
+
 h2 {
-    color: #228B22;
-    font-size: 24px;
-    text-align: left;
-    margin: 20px 0 10px 20px;
-}
-h3 {
     color: #228B22;
     font-size: 20px;
     text-align: left;
-    margin: 10px 0 5px 40px;
+    font-weight: bold;
+    margin: 20px 0 10px 20px;
 }
-p {
-    color: #228B22;
-    font-size: 16px;
-    text-align: center;
-    margin: 0 20px;
-}
-section {
-    padding: 0 30px;
-    margin: 20px 0;
-}
-#about, #experience, #skills, #projects, #connect {
-    background-color: #4c0080;
-    color: #228B22;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-}
-.experience-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.experience-item p {
-    margin: 5px 0;
-    text-align: left;
-}
-#connect ul {
+
+#experience ul {
     list-style-type: none;
     padding: 0;
-    justify-content: center;
+}
+
+#experience li {
     display: flex;
-    gap: 20px;
-}
-#connect li {
-    display: inline;
+    flex-direction: column;
+    border: 1px solid #228B22;
+    padding: 15px;
+    margin-bottom: 15px;
     background-color: #4c0080;
-    padding: 10px 20px;
-    border: 2px solid #228B22;
-    border-radius: 5px solid #228B22;
 }
-#connect a {
-    color: #228B22;
-    text-decoration: none;
+
+.job-title1 {
+    display: flex;
+    justify-content: space-between;
     font-weight: bold;
 }
-#connect a:hover {
+.job-title2 {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.job-title3 {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+#connect ul {
+    display: flex;
+    gap: 15px;
+    list-style-type: none;
+    padding: 0;
+}
+
+#connect a {
+    text-decoration: none;
     color: #228B22;
+    background-color: #4c0080;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid #228B22;)
 }
