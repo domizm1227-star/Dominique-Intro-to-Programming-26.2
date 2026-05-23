@@ -1,91 +1,112 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
 body {
     background-color: #000000;
     color: #228B22;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin: 0;
+}
+section {
+    margin: 40px 0;
+    padding:0% 30px;
+}
+h1 {
+    color: #228B22;
+    font-size: 32px;
+    text-align: center;
+    margin: 30px 0;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+}
+h2 {
+    color: #228B22;
+    font-size: 20px;
+    text-align: left;
+    font-weight: bold;
+    margin: 30px 0 15px 0px;
+    padding-left: 5px;
+    border-left: 4px solid #228B22;
+}
+.experience-box {
+    background-color: #4c0080;
+    border: 2px solid #228B22;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    box-shadow: 0.3s ease;
+}
+#experience ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+ul {
+    list-style-type: none;
     padding: 0;
 }
+.job-titles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.job-titles h3 {
+    margin: 0;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+}
+.job-date {
+    font-style: italic;
+    font-size: 14px;
+}
+
+#connect ul {
+    display: flex;
+    gap: 15px;
+}
+
+#connect a {
+    text-decoration: none;
+    color: #228B22;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid #228B22;
+}
 nav {
-    background-color: #4c0080;
-    padding: 10px 0;
-    text-align: center;
+    position: sticky;
+    top: 0;
+    background-color: #000000;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 2px solid #228B22;
+    z-index: 1000;
 }
 nav a {
     color: #228B22;
     text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
     font-weight: bold;
+    transition: 0.3s ease;
 }
 nav a:hover {
-    color: #228B22;
-}
-h1 {
-    color: #228B22;
-    font-size: 36px;
-    text-align: center;
-    margin-top: 20px 0;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-h2 {
-    color: #228B22;
-    font-size: 24px;
-    text-align: left;
-    margin: 20px 0 10px 20px;
-}
-h3 {
-    color: #228B22;
-    font-size: 20px;
-    text-align: left;
-    margin: 10px 0 5px 40px;
-}
-p {
-    color: #228B22;
-    font-size: 16px;
-    text-align: center;
-    margin: 0 20px;
-}
-section {
-    padding: 0 30px;
-    margin: 20px 0;
-}
-#about, #experience, #skills, #projects, #connect {
-    background-color: #4c0080;
-    color: #228B22;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-}
-.experience-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.experience-item p {
-    margin: 5px 0;
-    text-align: left;
-}
-#connect ul {
-    list-style-type: none;
-    padding: 0;
-    justify-content: center;
-    display: flex;
-    gap: 20px;
-}
-#connect li {
-    display: inline;
-    background-color: #4c0080;
-    padding: 10px 20px;
-    border: 2px solid #228B22;
-    border-radius: 5px solid #228B22;
-}
-#connect a {
-    color: #228B22;
-    text-decoration: none;
-    font-weight: bold;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
 }
 #connect a:hover {
-    color: #228B22;
+    background-color: #228B22;
+    color: #000000;
+    box-shadow: 0 0 10px #00ff00;
+    transition: 0.3s ease;
+}
+.experience-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 12px #228B22;
 }
