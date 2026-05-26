@@ -10,7 +10,7 @@ body {
 }
 section {
     margin: 40px 0;
-    padding:0% 30px;
+    padding:0 30px;
 }
 h1 {
     color: #228B22;
@@ -37,8 +37,7 @@ h2 {
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease;
-    box-shadow: 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 #experience ul {
     display: grid;
@@ -109,4 +108,35 @@ nav a:hover {
 .experience-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 0 12px #228B22;
+}
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+}
+.skills-list li {
+    background-color: #4c0080;
+    border: 2px solid #228B22;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+    transition:  0.3s ease;
+}
+.skills-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 12px #228B22;
+}
+@media (max-width: 600px) {
+    .skills-list {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 10px;
+    }
+
+.skills-list li {
+    padding: 8px;
+    font-size: 14px;
+    }
 }
