@@ -11,7 +11,7 @@ const myName = "Dominique";
 copyright.innerHTML = `&copy; ${myName} ${thisYear}`;
 footer.appendChild(copyright);
 
-const skills = ['HTML', 'CSS', 'JavaScript', 'Customer Service', 'AI Training', 'Problem Solving', 'Git & GitHub'];
+const skills = ['HTML', 'CSS', 'JAVASCRIPT', 'Customer-Service', 'AI-Training', 'Problem-Solving', 'Git & GitHub'];
 const skillsSection = document.getElementById('skills');
 const skillsList = skillsSection.querySelector('ul');
 
