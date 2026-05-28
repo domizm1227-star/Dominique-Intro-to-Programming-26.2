@@ -6,10 +6,9 @@ body.appendChild(footerElement);
 const today = new Date();
 const thisYear = today.getFullYear();
 const footer = document.querySelector('footer');
-const copyright = document.createElement('p');
-const myName = "Dominique";
-copyright.innerHTML = `&copy; ${myName} ${thisYear}`;
-footer.appendChild(copyright);
+const copyrightParagraph = document.createElement('p');
+copyrightParagraph.textContent ='${new Date().getFullYear()} Dominique Medrano';
+footerElement.appendChild(copyrightParagraph);
 
 const skills = ['HTML', 'CSS', 'JAVASCRIPT', 'Customer-Service', 'AI-Training', 'Problem-Solving', 'Git & GitHub'];
 const skillsSection = document.getElementById('skills');
