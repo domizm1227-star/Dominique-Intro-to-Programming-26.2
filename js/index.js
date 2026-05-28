@@ -11,13 +11,13 @@ const myName = "Dominique";
 copyright.innerHTML = `&copy; ${myName} ${thisYear}`;
 footer.appendChild(copyright);
 
-const skills = [HTML, CSS, JAVASCRIPT, Customer-Service, AI-Training, Problem-Solving, Git & Github];
-const skillsection = document.getElementById('skills');
-const skillList = skillsSection.querySelector('ul');
+const skills = ['HTML', 'CSS', 'JAVASCRIPT', 'Customer-Service', 'AI-Training', 'Problem-Solving', 'Git & GitHub'];
+const skillsSection = document.getElementById('skills');
+const skillsList = skillsSection.querySelector('ul');
 
 for (let i = 0; i < skills.length; i++) {
-    const skill = document.createElement('li');
-    skill.innerText = skills[i];
-    skillsList.appendChild(skill);
+    const skillsItem = document.createElement('li');
+    skillsItem.innerText = skills[i];
+    skillsList.appendChild(skillsItem);
 }
 
