@@ -140,3 +140,149 @@ nav a:hover {
     font-size: 14px;
     }
 }
+
+#message form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 4px #000000;
+}
+
+#message label {
+    font-weight: 600;
+    color: #333;
+    font-size: 16;
+}
+
+#message input[type="text"],
+#message input[type="email"] {
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+#message input[type="text"]:focus,
+#message input[type="email"]:focus {
+    border-color: #007bff;
+}
+
+#message textarea {
+    padding: 14px;
+    font-size: 16px;
+    min-height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+}
+
+#message textarea:focus {
+    border-color: #007bff;
+}
+
+#message button[type="submit"] {
+    margin-top: 10px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#message button[type="submit"]:hover {
+    background-color: #0056b3
+}
+
+#message button[type="submit"]:active {
+    transform: scale(0.98);
+}
+#messages {
+    max-width: 600px;
+    margin: 40px auto 20px;
+    padding: 0 10px;
+}
+
+#messages h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#messages ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#messages ul li {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 3px #000000;
+    word-wrap: break-word;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+#messages ul li p {
+    margin: 8px 0 0;
+    color: #555;
+}
+
+#messages ul li strong {
+    display: block;
+    color: #007bff;
+    font-size: 16px;
+}
+
+@media (max-width: 480px) {
+    #message form {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    #message label,
+    #message button[type="submit"] {
+        font-size: 16px;
+    }
+
+    #message input[type="text"],
+    #message button[type="email"],
+    #message textarea {
+        font-size: 16px;
+        padding: 14px;
+    }
+
+    #messages {
+        padding: 0 15px;
+    }
+}
+
+@media (min-width: 768px) {
+    #message form {
+        padding: 30px;
+    }
+
+    #message button[type="submit"] {
+        font-size: 18px;
+        padding: 16px;
+    }
+}
+
