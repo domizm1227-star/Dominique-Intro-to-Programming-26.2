@@ -54,3 +54,32 @@ newMessage.appendChild(removeButton);
 
 messageForm.reset();
 });
+
+fetch("https://api.github.com/users/domizm1227-star/repos")
+.then(response => response.json())
+.then(data => {
+    const repositories = data;
+
+    console.log("Your GitHub Repositories:", repositories);
+
+    const projectSection = document.getElementById("projects");
+    const projectList = projectSection.querySelector("ul");
+
+    projectList.innerHTML = '';
+
+    for(let i = 0; i < repositories.length; i++) {
+        const project = document.createElement("li");
+        project.innerText = repositories[i].name;
+        projectList.appendChild(project);
+    }
+    })
+    .catch(error => {
+        console.error("Error fetching repos:", error);
+
+        const projectSection = document.getElementById("projects");
+        const projectList = projectSection.querySelector("ul");
+
+        const errorItem = document.createElement("li");
+        errorItem.innerText = "Unable to load repositories. Please try again later.";
+        projectList.appendChild(errorItem); 
+    });

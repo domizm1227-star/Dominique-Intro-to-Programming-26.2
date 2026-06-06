@@ -286,3 +286,24 @@ nav a:hover {
     }
 }
 
+#projects ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+#projects li {
+    background: #111111;
+    color: #0f0;
+    padding: 10px 15px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px #0f0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#projects li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #0f0;
+}
