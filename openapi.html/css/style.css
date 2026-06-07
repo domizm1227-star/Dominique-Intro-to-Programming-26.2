@@ -1,8 +1,26 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Orbitron',Arial, sans-serif;
     background-color: #0c0c0c;
-    color: #f2f2f2;
+    background-image: radial-gradient(circle at 50% 50%, #0f0f0f 0%, #000 70%);
+    color: #e6e6e6;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    z-index: 1;
 }
 .top-nav {
     background-color: #111;
@@ -11,7 +29,7 @@ body {
 }
 .back-link {
      color: #d4d4d4;
-     text-direction: none;
+     text_style: none;
      font-size: 14px;
 }
 .back-link:hover {
@@ -30,9 +48,14 @@ body {
     height: calc(100vh - 120px);
 }
 .search-panel {
-    width: 30%;
-    panel-padding: 20px;
-    border-right: 1px solid #333;
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid #0ff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+    position: relative;
+    z-index: 2;
 }
 .search-input {
     width: 100%;
@@ -53,24 +76,28 @@ body {
 .search-btn:hover {
     background: #333;
 }
-.results-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 15px;
-}
 .results-list li {
     padding: 10px;
-    background: #1a1a1a;
-    margin-bottom: 6px;
+    background: #0a0a0a;
+    border: 1px solid #0ff;
+    margin-bottom: 8px;
     border-radius: 4px;
     cursor: pointer;
+    color: #0ff;
 }
 .results-list li:hover {
-    background: #2a2a2a;
+    background: #002b3d;
+    box-shadow: 0 0 6px #0ff;
 }
 .details-panel {
-    width: 70%;
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid #0ff;
+    border-radius: 8px;
     padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+    position: relative;
+    z-index: 2;
 }
 .character-title {
     margin-top: 0;
@@ -79,20 +106,24 @@ body {
     margin-top: 15px;
 }
 .tab-btn {
-    padding: 10px 12px;
+    padding: 10px 14px;
     margin-right: 6px;
-    background: #1a1a1a;
-    border: 1px solid #444;
-    color: #fff;
+    background: #001f2f;
+    border: 1px solid #0ff;
+    color: #0ff;
     cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 .tab-btn:hover {
-    background: #333;
+    background: #003b55;
+    box-shadow: 0 0 8px #0ff;
 }
 .tab-content {
     display: none;
     margin-top: 20px;
-    background: #111;
+    background: ;
     padding: 15px;
     border-radius: 6px;
     border: 1px solid #333;

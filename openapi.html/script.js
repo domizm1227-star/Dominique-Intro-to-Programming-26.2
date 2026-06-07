@@ -61,7 +61,7 @@ async function fetchCharacters(name) {
         }
 }
 
-asyncfunction fetchCharacterDetails(id) {
+async function fetchCharacterDetails(id) {
     try {
         const res = await fetch(`https://www.swapi.tech/api/people/${id}`);
         const data = await res.json();
@@ -84,5 +84,90 @@ asyncfunction fetchCharacterDetails(id) {
 
     } catch (error) {
         characterName.textContent = "Error loading character";
+    }
+}
+
+async function loadCharactersHome() {
+    if (!currentCharacter) return;
+
+    charactersHomeDiv.innerHTML = "Loading...";
+
+    try {
+        const res = await fetch(currentCharacter.charactersHome);
+        const data = await res.json();
+        const p = data.result.properties;
+
+        charactersHomeDiv.innerHTML = `
+            <p><strong>Name:</strong> ${p.name}</p>
+            <p><strong>Climate:</strong> ${p.climate}</p>
+            <p><strong>Terrain:</strong> ${p.terrain}</p>
+            <p><strong>Population:</strong> ${p.population}</p>
+            `;
+    } catch {
+        charactersHomeDiv.innerHTML = "Could not load characters home";
+    }
+}
+
+async function loadStarships() {
+    if (!currentCharacter) return;
+
+    starshipsDiv.innerHTML = "";
+
+    if(!currentCharacter.starships.length) {
+        starshipsDiv.innerHTML = "<p>No starships found</p>";
+        return;
+    }
+
+    starshipsDiv.innerHTML = "Loading starships...";
+
+    try {
+        let html = "";
+
+        for(let url of currentCharacter.starships) {
+            const res = await fetch(url);
+            const data = await res.json();
+            const s = data.result.properties;
+
+            html += `
+                <div class="ship-card">
+                    <h3>${s.name}</h3>
+                    <p><strong>Model:</strong> ${s.model}</p>
+                    <p><strong>Manufacturer:</strong> ${s.manufacturer}</p>
+                    <p><strong>Cost:</strong> ${s.cost_in_credits}</p>
+                    <p><strong>Rating:</strong> ${s.starship_class}</p>
+                </div>
+            `;
+        }
+        starshipsDiv.innerHTML = html;
+    } catch (error) {
+        starshipsDiv.innerHTML = "Could not load starships";            
+    }
+}
+
+async function loadFilms() {
+    if (!currentCharacter) return;
+
+    filmsDiv.innerHTML = "Loading films...";
+
+    try {
+        let html = "";
+
+        for(let url of currentCharacter.films) {
+            const res = await fetch(url);
+            const data = await res.json();
+            const f = data.result.properties;
+
+            html += `
+                <div class="film-card">
+                    <h3>${f.name}</h3>
+                    <p><strong>Release Date:</strong> ${f.release_date}</p>
+                    <p><strong>Director:</strong> ${f.director}</p>
+                    <p><strong>Producer:</strong> ${f.producer}</p>
+                </div>
+            `;
+        }
+        filmsDiv.innerHTML = html;
+    } catch (error) {
+        filmsDiv.innerHTML = "Could not load films";
     }
 }
