@@ -29,7 +29,7 @@ body::before {
 }
 .back-link {
      color: #d4d4d4;
-     text_style: none;
+     text-decoration:none;
      font-size: 14px;
 }
 .back-link:hover {
@@ -103,18 +103,16 @@ body::before {
     margin-top: 0;
 }
 .tabs {
-    margin-top: 15px;
+    display: flex;
+    gap: 10px;
 }
 .tab-btn {
     padding: 10px 14px;
-    margin-right: 6px;
     background: #001f2f;
     border: 1px solid #0ff;
     color: #0ff;
     cursor: pointer;
     border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 .tab-btn:hover {
     background: #003b55;
@@ -123,8 +121,16 @@ body::before {
 .tab-content {
     display: none;
     margin-top: 20px;
-    background: ;
+    background: transparent;
     padding: 15px;
     border-radius: 6px;
     border: 1px solid #333;
+}
+.ship-card {
+    padding: 10px;
+    background: rgba(0, 30, 40, 0.6);
+    border: 1px solid #0ff;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
 }

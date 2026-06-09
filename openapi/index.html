@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Everything About Star Wars - OpenAPI</title>
-    <link rel="stylesheet" href="css/openapi.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="top-nav">
@@ -25,20 +25,21 @@
                 id="searchInput"
                 placeholder="Search for a Star Wars character..."
                 class="search-input"
-                >
+            >
 
-            button id="searchButton" class="search-btn">Search</button>
-        <ul id="resultsList" class="results-list"></ul>
+            <button id="searchButton" class="search-btn">Search</button>
+        
+            <ul id="resultsList" class="results-list"></ul>
         </section>
 
         <section class="details-panel">
             <h2 id="charactersName" class="character-title">Select a character</h2>
 
-            <div class="tabs">                <button class="tab-btn" data-tab="basicInfo"Basic Info></button>
-                <button class="tab-btn" data-table="charactersHome">Home></button>
+            <div class="tabs">
+                <button class="tab-btn" data-tab="charactersHome">Home</button>
                 <button class="tab-btn" data-tab="films">Films</button>
                 <button class="tab-btn" data-tab="starships">Starships</button>
-                <button class="basicInfo" data-tab="basicInfo">Basic Info</button>
+                <button class="tab-btn" data-tab="basicInfo">Basic Info</button>
             </div>
 
             <div id="basicInfo" class="tab-content"></div>
@@ -51,4 +52,4 @@
 
     <script src="script.js"></script>
 </body>
-    </html>
+</html>
