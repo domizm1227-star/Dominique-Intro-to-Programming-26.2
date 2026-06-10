@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    font-family: 'Orbitron',Arial, sans-serif;
+    background-color: #0c0c0c;
+    background-image: radial-gradient(circle at 50% 50%, #0f0f0f 0%, #000 70%);
+    color: #e6e6e6;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.03) 0px,
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    z-index: 1;
+}
+.top-nav {
+    background-color: #111;
+    padding: 12px 20px;
+    border-bottom: 1px solid #333;
+}
+.back-link {
+     color: #d4d4d4;
+     text-decoration:none;
+     font-size: 14px;
+}
+.back-link:hover {
+    color: #ffffff;
+}
+.page-header {
+    text-align: center;
+    padding: 20px 0;
+}
+.subtitle {
+    color: #bbbbbb;
+    margin-top: -5px;
+}
+.layout {
+    display: flex;
+    height: calc(100vh - 120px);
+}
+.search-panel {
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid #0ff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+    animation: panelGlow 4s ease-in-out infinite alternate;
+}
+@keyframes panelGlow {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+    }
+}
+.search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #1a1a1a;
+    border: 1px solid #444;
+    color: #fff;
+}
+.search-btn {
+    width: 100%;
+    padding: 10px;
+    background: #222;
+    border: 1px solid #444;
+    color: #fff;
+    cursor: pointer;
+}
+.search-btn:hover {
+    background: #333;
+}
+.results-list li {
+    padding: 10px;
+    background: #0a0a0a;
+    border: 1px solid #0ff;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #0ff;
+}
+.results-list li:hover {
+    background: #002b3d;
+    box-shadow: 0 0 6px #0ff;
+}
+.details-panel {
+    background: rgba(10, 10, 10, 0.7);
+    border: 1px solid #0ff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+    position: relative;
+    z-index: 2;
+}
+.character-title {
+    margin-top: 0;
+}
+.tabs {
+    display: flex;
+    gap: 10px;
+}
+.tab-btn {
+    padding: 10px 14px;
+    background: #001f2f;
+    border: 1px solid #0ff;
+    color: #0ff;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+    transition: 0.3s ease;
+    animation: buttonPulse 2.5s infinite alternate;
+}
+.tab-btn:hover {
+    background: #003b55;
+    box-shadow: 0 0 8px #0ff;
+}
+@keyframes buttonPulse {
+    0% {
+        box-shadow: 0 0 4px rgba(0, 255, 255, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 14px rgba(0, 255, 255, 0.8);
+    }
+}
+.tab-content {
+    display: none;
+    margin-top: 20px;
+    background: transparent;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #333;
+}
+.ship-card {
+    padding: 10px;
+    background: rgba(0, 30, 40, 0.6);
+    border: 1px solid #0ff;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
+}
+.sw-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffe81f;
+    text-shadow:
+        0 0 10px #ffe81f,
+        0 0 20px #ffcc00,
+        0 0 30px #ffcc00;
+    letter-spacing: 4px;
+    margin: 0;
+    animation: logoGlow 3s ease-in-out infinite alternate; 
+}
+@keyframes logoGlow {
+    0% {
+        text-shadow:none
+            0 0 10px #ffe81f,
+            0 0 20px #ffcc00,
+            0 0 30px #ffcc00;
+    }
+    100% {
+        text-shadow:
+            0 0 20px #ffe81f,
+            0 0 40px #ffcc00,
+            0 0 60px #ffcc00;
+    }
+}
