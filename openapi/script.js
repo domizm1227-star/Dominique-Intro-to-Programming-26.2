@@ -22,8 +22,8 @@ tabButtons.forEach(button => {
 
         document.getElementById(tab).style.display = "block";
 
-        if(tab === "basicInfo") loadbasicInfo();
-        else if (tab === "charactersHome") loadcharactersHome();
+        if(tab === "basicInfo") loadBasicInfo();
+        else if (tab === "charactersHome") loadCharactersHome();
         else if (tab === "starships") loadStarships();
         else if (tab === "films") loadFilms()
     });
@@ -55,10 +55,11 @@ async function fetchCharacters(name) {
             li.addEventListener("click", () => fetchCharacterDetails(item.uid));
                 
                 resultsList.appendChild(li);
-        });    } catch (error) {
+        });    
+    } catch (error) {
         resultsList.innerHTML = "<li>Error fetching characters</li>";
         console.error(error);
-        }
+    }
 }
 
 async function fetchCharacterDetails(id) {
@@ -69,21 +70,22 @@ async function fetchCharacterDetails(id) {
 
         currentCharacter = char;
 
-        characterName.textContent = char.name;
+        ch
+        aractersName.textContent = char.name;
 
         basicInfoDiv.innerHTML = `
             <p><strong>Birth Year:</strong> ${char.birth_year}</p>
-            <p><strong>Height:</strong> $char.height}</p>
-            <p><strong>Mass:</strong> ${char.mass}</p>
-            <p><strong>Gender:</strong> ${char.gender}</p>}
+            <p><strong>Height:</strong> ${char.height}</p>
+            <p><strong>Name:</strong> ${char.name}</p>
+            <p><strong>Gender:</strong> ${char.gender}</p>
     `;
 
-    charactersHomeDiv.innerHTML = "";
-    starshipsDiv.innerHTML = "";
+    charactersHomeDiv.innerHTML = "",
+    starshipsDiv.innerHTML = "",
     filmsDiv.innerHTML = "";
 
     } catch (error) {
-        characterName.textContent = "Error loading character";
+        charactersName.textContent = "Error loading character";
     }
 }
 
@@ -93,7 +95,7 @@ async function loadCharactersHome() {
     charactersHomeDiv.innerHTML = "Loading...";
 
     try {
-        const res = await fetch(currentCharacter.charactersHome);
+        const res = await fetch(currentCharacter.homeworld);
         const data = await res.json();
         const p = data.result.properties;
 
@@ -159,7 +161,7 @@ async function loadFilms() {
 
             html += `
                 <div class="film-card">
-                    <h3>${f.name}</h3>
+                    <h3>${f.title}</h3>
                     <p><strong>Release Date:</strong> ${f.release_date}</p>
                     <p><strong>Director:</strong> ${f.director}</p>
                     <p><strong>Producer:</strong> ${f.producer}</p>
