@@ -141,7 +141,6 @@ body::before {
 .tab-content {
     display: none;
     margin-top: 20px;
-    background: transparent;
     padding: 15px;
     border-radius: 6px;
     border: 1px solid #333;
