@@ -70,8 +70,7 @@ async function fetchCharacterDetails(id) {
 
         currentCharacter = char;
 
-        ch
-        aractersName.textContent = char.name;
+        charactersName.textContent = char.name;
 
         basicInfoDiv.innerHTML = `
             <p><strong>Birth Year:</strong> ${char.birth_year}</p>
