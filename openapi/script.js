@@ -1,174 +1,145 @@
-const searchInput = document.getElementById("searchInput");
-const searchButton = document.getElementById("searchButton");
-const resultsList = document.getElementById("resultsList");
+let globalCharacters = [];
+let globalFilms = [];
 
-const charactersName = document.getElementById("charactersName");
+//Automatically fetch data when the script loads
+async function initialData() {
+    const container = document.getElementById('content-display');
+    container.innerHTML = '<p class="loading">Loading Star Wars data...</p>';
 
-const basicInfoDiv = document.getElementById("basicInfo");
-const charactersHomeDiv = document.getElementById("charactersHome");
-const starshipsDiv = document.getElementById("starships");
-const filmsDiv = document.getElementById("films");
+    try {
+        //Fetching characters with a result of 10 with a limit use of 100
+        const characterResponse = await fetch('https://www.swapi.tech/api/people?page=1&limit=80');
+        const characterData = await characterResponse.json();
+        globalCharacters = characterData.results; //Should be an array of {uid, name, url}
 
-const tabButtons = document.querySelectorAll(".tab-btn");
-const tabContents = document.querySelectorAll(".tab-content");
+        //Fetching Films
+        const filmResponse = await fetch('https://www.swapi.tech/api/films');
+        const filmData = await filmResponse.json();
+        globalFilms = filmData.result; //Should be an array of film objects containing properties
 
-let currentCharacter = null;
+        //Showing first tab
+        switchTab('characters');
+    } catch (error) {
+        console.error("Error fetching data from SWAPI:", error);
+        container.innerHTML = '<p class="error">Failed to load data. Please try again later.</p>';
+    }
+}
 
-tabButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        const tab = button.dataset.tab;
+//Control tab switching
+function switchTab(tabName) {
+    const container = document.getElementById('content-display');
+    container.innerHTML = ''; //Clears previous content
 
-        tabContents.forEach(div => div.style.display = "none");
+    if (tabName === 'characters') {
+        renderCharacters(container);
+    } else if (tabName === 'films') {
+        renderFilms(container);
+    } else if (tabName === 'comparison') {
+        renderComparisonTool(container);
+    }
+}
 
-        document.getElementById(tab).style.display = "block";
+//Characters List
+function renderCharacters(container) {
+    const heading = document.createElement('h2');
+    heading.textContent = "Star Wars Characters";
+    container.appendChild(heading);
 
-        if(tab === "basicInfo") loadBasicInfo();
-        else if (tab === "charactersHome") loadCharactersHome();
-        else if (tab === "starships") loadStarships();
-        else if (tab === "films") loadFilms()
+    const list = document.createElement('ul');
+    list.className = "card-list";
+
+    globalCharacters.forEach(char => {
+        const item = document.createElement('li');
+        item.className = "card-item";
+        item.innerHTML = `<strong>${char.name}</strong>`;
+        list.appendChild(item);
     });
-});
+    container.appendChild(list);
+}
 
-searchButton.addEventListener("click", () => {
-    const term = searchInput.value.trim();
-    if (term) fetchCharacters(term);
-});
+//Films List
+function renderFilms(container) {
+    const heading = document.createElement('h2');
+    heading.textContent = "Star Wars Films";
+    container.appendChild(heading);
 
-async function fetchCharacters(name) {
-    resultsList.innerHTML = "Searching...";
+    const list = document.createElement('ul');
+    list.className = "card-list";
 
-    try {
-        const res = await fetch(`https://www.swapi.tech/api/people/?name=${name}`);
-        const data = await res.json();
+    globalFilms.forEach(film => {
+        const item = document.createElement('li');
+        item.className = "card-item";
 
-        if (!data.result.length) {
-            resultsList.innerHTML = "<li>No characters found</li>";
-            return;
+        const props = film.properties;
+        item.innerHTML = `
+        <strong>${props.title}</strong>
+        <small>Director: ${props.director} | Released: ${props.release_date}</small>`;
+        list.appendChild(item);
+    });
+    container.appendChild(list);
+}
+
+//Character to Film Matcher Side by Side
+function renderComparisonTool(container) {
+    const heading = document.createElement('h2');
+    heading.textContent = "Character Film Matcher";
+    container.appendChild(heading);
+
+    //Create Dropdown Label
+    const label = document.createElement('label');
+    label.setAttribute('for', 'char-select');
+    label.textContent = "Choose a Character: ";
+    container.appendChild(label);
+
+    //Creating Selector
+    const select = document.createElement('select');
+    select.id = "char-select";
+
+    //Populate options with characters
+    globalCharacters.forEach(char => {
+        const option = document.createElement('option');
+        option.value = char.url;
+        option.textContent = char.name;
+        select.appendChild(option);
+    });
+    container.appendChild(select);
+
+    //Create results
+    const resultsDiv = document.createElement('div');
+    resultsDiv.id = "match-results";
+    container.appendChild(resultsDiv);
+
+    //Event listener to check for matches when character changes
+    select.addEventListener('change', (event) => {
+        const selectedCharUrl = event.target.value;
+        resultsDiv.innerHTML = '';
+
+        //Filter containing this characters exact API URL string
+        const matchingFilms = globalFilms.filter(film => {
+            return film.properties.characters.includes(selectedCharUrl);
+        });
+
+        if (matchingFilms.length === 0) {
+            resultsDiv.innerHTML = '<p class="no-match">No recorded film matches found for this character in the database range.</p>';
+        } else {
+            const resultHeading = document.createElement('h3');
+            resultHeading.textContent = "Appears In:";
+            resultsDiv.appendChild(resultHeading);
+
+            const resultList = document.createElement('ul');
+            matchingFilms.forEach(film => {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${film.properties.title}</strong> (Episode ${film.properties.episode_id})`;
+                resultList.appendChild(li);
+            });
+            resultsDiv.appendChild(resultList);
         }
+    });
 
-        resultsList.innerHTML = "";
-
-        data.result.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = item.properties.name;
-
-            li.addEventListener("click", () => fetchCharacterDetails(item.uid));
-                
-                resultsList.appendChild(li);
-        });    
-    } catch (error) {
-        resultsList.innerHTML = "<li>Error fetching characters</li>";
-        console.error(error);
+    //Triggering initial selection display
+    if (globalCharacters.length > 0) {
+        select.dispatchEvent(new Event('change'));
     }
 }
 
-async function fetchCharacterDetails(id) {
-    try {
-        const res = await fetch(`https://www.swapi.tech/api/people/${id}`);
-        const data = await res.json();
-        const char = data.result.properties;
-
-        currentCharacter = char;
-
-        charactersName.textContent = char.name;
-
-        basicInfoDiv.innerHTML = `
-            <p><strong>Birth Year:</strong> ${char.birth_year}</p>
-            <p><strong>Height:</strong> ${char.height}</p>
-            <p><strong>Name:</strong> ${char.name}</p>
-            <p><strong>Gender:</strong> ${char.gender}</p>
-    `;
-
-    charactersHomeDiv.innerHTML = "",
-    starshipsDiv.innerHTML = "",
-    filmsDiv.innerHTML = "";
-
-    } catch (error) {
-        charactersName.textContent = "Error loading character";
-    }
-}
-
-async function loadCharactersHome() {
-    if (!currentCharacter) return;
-
-    charactersHomeDiv.innerHTML = "Loading...";
-
-    try {
-        const res = await fetch(currentCharacter.homeworld);
-        const data = await res.json();
-        const p = data.result.properties;
-
-        charactersHomeDiv.innerHTML = `
-            <p><strong>Name:</strong> ${p.name}</p>
-            <p><strong>Climate:</strong> ${p.climate}</p>
-            <p><strong>Terrain:</strong> ${p.terrain}</p>
-            <p><strong>Population:</strong> ${p.population}</p>
-            `;
-    } catch {
-        charactersHomeDiv.innerHTML = "Could not load characters home";
-    }
-}
-
-async function loadStarships() {
-    if (!currentCharacter) return;
-
-    starshipsDiv.innerHTML = "";
-
-    if(!currentCharacter.starships.length) {
-        starshipsDiv.innerHTML = "<p>No starships found</p>";
-        return;
-    }
-
-    starshipsDiv.innerHTML = "Loading starships...";
-
-    try {
-        let html = "";
-
-        for(let url of currentCharacter.starships) {
-            const res = await fetch(url);
-            const data = await res.json();
-            const s = data.result.properties;
-
-            html += `
-                <div class="ship-card">
-                    <h3>${s.name}</h3>
-                    <p><strong>Model:</strong> ${s.model}</p>
-                    <p><strong>Manufacturer:</strong> ${s.manufacturer}</p>
-                    <p><strong>Cost:</strong> ${s.cost_in_credits}</p>
-                    <p><strong>Rating:</strong> ${s.starship_class}</p>
-                </div>
-            `;
-        }
-        starshipsDiv.innerHTML = html;
-    } catch (error) {
-        starshipsDiv.innerHTML = "Could not load starships";            
-    }
-}
-
-async function loadFilms() {
-    if (!currentCharacter) return;
-
-    filmsDiv.innerHTML = "Loading films...";
-
-    try {
-        let html = "";
-
-        for(let url of currentCharacter.films) {
-            const res = await fetch(url);
-            const data = await res.json();
-            const f = data.result.properties;
-
-            html += `
-                <div class="film-card">
-                    <h3>${f.title}</h3>
-                    <p><strong>Release Date:</strong> ${f.release_date}</p>
-                    <p><strong>Director:</strong> ${f.director}</p>
-                    <p><strong>Producer:</strong> ${f.producer}</p>
-                </div>
-            `;
-        }
-        filmsDiv.innerHTML = html;
-    } catch (error) {
-        filmsDiv.innerHTML = "Could not load films";
-    }
-}
+window.onload = initialData;
