@@ -3,53 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet" />
     <title>Everything About Star Wars - OpenAPI</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <nav class="top-nav">
-        <a href="index.html" class="back-link">Back to Portfolio</a>    
-    </nav>
+    <header class="top-nav">
+        <a href="openapi/index.html" class="back-link">Back to Portfolio</a>
+    </header>
 
     <header class="page-header">
         <h1 class="sw-logo">STAR WARS</h1>
-        <p class="subtitle">Character Explorer</p>
-        <h1>Star Wars Character Explorer</h1>
-        <p class="subtitle">Discover your favorite characters from the Star Wars universe</p>
-    
+        <p class="subtitle">Character Explorer & Film Data Explorer</p>
     </header>
 
+    <nav class="tabs">
+        <button class="tab-btn active" data-tab="characters">Characters</button>
+        <button class="tab-btn" data-tab="films">Films</button>
+        <button class="tab-btn" data-tab="matcher">Match Character & Films</button>
+    </nav>
+
     <main class="layout">
+        <section class="panel" id="content-panel">
+            <div id="content-display" class="content-display">
 
-        <section class="search-panel">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search for a Star Wars character..."
-                class="search-input"
-            >
-
-            <button id="searchButton" class="search-btn">Search</button>
-        
-            <ul id="resultsList" class="results-list"></ul>
-        </section>
-
-        <section class="details-panel">
-            <h2 id="charactersName" class="character-title">Select a character</h2>
-
-            <div class="tabs">
-                <button class="tab-btn" data-tab="charactersHome">Home</button>
-                <button class="tab-btn" data-tab="films">Films</button>
-                <button class="tab-btn" data-tab="starships">Starships</button>
-                <button class="tab-btn" data-tab="basicInfo">Basic Info</button>
             </div>
-
-            <div id="basicInfo" class="tab-content"></div>
-            <div id="charactersHome" class="tab-content"></div>
-            <div id="films" class="tab-content"></div>
-            <div id="starships" class="tab-content"></div>
         </section>
-
     </main>
 
     <script src="script.js"></script>
