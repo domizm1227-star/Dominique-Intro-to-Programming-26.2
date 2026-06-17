@@ -41,8 +41,6 @@ console.log("Message:", message);
 const messageSection = document.querySelector('#messages');
 const messageList = messageSection.querySelector('ul');
 
-const newMessage = document.createElement('li');
-
 //Creating a new message item
 const newMessage = document.createElement('li');
 
@@ -86,7 +84,7 @@ fetch("https://api.github.com/users/domizm1227-star/repos")
         const project = document.createElement("li");
         //Repository names are clickable links
         const projectLink=document.createElement("a");
-        projectLink.href = repsitries[i].html_url;
+        projectLink.href = repositories[i].html_url;
         projectLink.target = "_blank";
         project.innerText = repositories[i].name;
         projectLink.style.color = "inherit";
