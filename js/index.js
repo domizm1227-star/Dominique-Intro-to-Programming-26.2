@@ -7,7 +7,7 @@ const today = new Date();
 const thisYear = today.getFullYear();
 const footer = document.querySelector('footer');
 const copyrightParagraph = document.createElement('p');
-copyrightParagraph.textContent =`Dominique Medrano ${new Date().getFullYear()}`;
+copyrightParagraph.textContent = `© Dominique Medrano ${thisYear}`;
 footerElement.appendChild(copyrightParagraph);
 
 const skills = ['HTML', 'CSS', 'JAVASCRIPT', 'Customer-Service', 'AI-Training', 'Problem-Solving', 'Git & GitHub'];
