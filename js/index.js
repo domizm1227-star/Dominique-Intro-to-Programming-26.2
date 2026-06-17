@@ -9,7 +9,7 @@ const thisYear = today.getFullYear();
 
 //Paragraph for copyright info
 const copyrightParagraph = document.createElement('p');
-copyrightParagraph.textContent =`&copy; Dominique Medrano ${new Date().getFullYear()}`;
+copyrightParagraph.textContent = `© Dominique Medrano ${thisYear}`;
 footerElement.appendChild(copyrightParagraph);
 
 //Array of skills
