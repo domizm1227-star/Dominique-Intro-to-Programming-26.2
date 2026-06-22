@@ -39,7 +39,7 @@ console.log("Email:", email);
 console.log("Message:", message);
 
 const messageSection = document.querySelector('#messages');
-const messageList = messageSection.querySelector('ul');
+const messageList = messageSection.querySelector('#messages-list');
 
 //Creating a new message item
 const newMessage = document.createElement('li');
@@ -50,8 +50,8 @@ messageList.appendChild(newMessage);
 
 //Creating Remove button
 const removeButton = document.createElement('button');
-removeButton.innerText = 'remove';
 removeButton.type = 'button';
+removeButton.textContent = 'delete';
 
 //Adding click event to remove
 removeButton.addEventListener('click', function() {
@@ -62,6 +62,7 @@ removeButton.addEventListener('click', function() {
 
 //Appending button and message to the list
 newMessage.appendChild(removeButton);
+messagesList.appendChild(newMessage);
 
 messageForm.reset();
 });
