@@ -39,9 +39,7 @@ console.log("Email:", email);
 console.log("Message:", message);
 
 const messageSection = document.querySelector('#messages');
-const messageList = messageSection.querySelector('ul');
-
-const newMessage = document.createElement('li');
+const messageList = messageSection.querySelector('#messages-list');
 
 //Creating a new message item
 const newMessage = document.createElement('li');
@@ -52,8 +50,8 @@ messageList.appendChild(newMessage);
 
 //Creating Remove button
 const removeButton = document.createElement('button');
-removeButton.innerText = 'remove';
 removeButton.type = 'button';
+removeButton.textContent = 'delete';
 
 //Adding click event to remove
 removeButton.addEventListener('click', function() {
@@ -64,6 +62,7 @@ removeButton.addEventListener('click', function() {
 
 //Appending button and message to the list
 newMessage.appendChild(removeButton);
+messagesList.appendChild(newMessage);
 
 messageForm.reset();
 });
@@ -86,7 +85,7 @@ fetch("https://api.github.com/users/domizm1227-star/repos")
         const project = document.createElement("li");
         //Repository names are clickable links
         const projectLink=document.createElement("a");
-        projectLink.href = repsitries[i].html_url;
+        projectLink.href = repositories[i].html_url;
         projectLink.target = "_blank";
         project.innerText = repositories[i].name;
         projectLink.style.color = "inherit";
